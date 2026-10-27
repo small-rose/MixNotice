@@ -1,0 +1,24 @@
+﻿音源ID,音源名,文件,来源页面,作者,授权,处理说明
+rain-light,小雨,rain-light.m4a,https://commons.wikimedia.org/wiki/File%3ARain_on_leaves_%28Gravity_Sound%29.wav,Gravity Sound,CC BY 4.0,裁切 60s + 响度归一 + 首尾 1s 交叉淡化
+rain-heavy,大雨,rain-heavy.m4a,https://commons.wikimedia.org/wiki/File%3AFalling_Rain_SFX_1_2016-11-19.oga,valvalion,CC BY 3.0,裁切 60s + 响度归一 + 首尾 1s 交叉淡化
+thunder,雷声,thunder.m4a,https://commons.wikimedia.org/wiki/File%3ARhumphries_-_rbh-thunder-storm.ogg,RHumphries,CC BY 3.0,裁切 60s + 响度归一 + 首尾 1s 交叉淡化
+wind,风,wind.m4a,https://commons.wikimedia.org/wiki/File%3AWind_sounds_2020-05-10_1625.mp3," ‹a href=""//commons.wikimedia.org/w/index.php?title=User:Robert_EA_Harvey&amp;ac",CC BY-SA 4.0,裁切 + 响度归一 + 首尾 1s 交叉淡化 + lowpass=f=2400
+stream,溪流,stream.m4a,https://commons.wikimedia.org/wiki/File%3A433589_jackthemurray_stream-river-water-up-close.wav,jackthemurray,CC0,裁切 60s + 响度归一 + 首尾 1s 交叉淡化
+waves,海浪,waves.m4a,https://commons.wikimedia.org/wiki/File%3ASea_waves.wav,Wikimedia Commons 贡献者,CC BY-SA 4.0,裁切 20s + 响度归一 + 首尾 1s 交叉淡化
+birds,鸟鸣,birds.m4a,https://commons.wikimedia.org/wiki/File%3A20210321_0900_Birdsong_Bourne_Lincolnshire.mp3,Bourne Lincolnshire 录音者,CC BY-SA 4.0,裁切 60s + 响度归一 + 首尾 1s 交叉淡化
+campfire,篝火,campfire.m4a,https://commons.wikimedia.org/wiki/File%3ACampfire_sound_ambience.ogg,Glaneur de sons,CC BY 3.0,裁切 59s + 响度归一 + 首尾 1s 交叉淡化
+forest,森林,forest.m4a,https://commons.wikimedia.org/wiki/File%3AForest_ambience_%28Gravity_Sound%29.wav,Gravity Sound,CC BY 4.0,裁切 32s + 响度归一 + 首尾 1s 交叉淡化
+night-crickets,夜晚虫鸣,night-crickets.m4a,https://commons.wikimedia.org/wiki/File%3ANight_original_format.wav,Wikimedia Commons 贡献者,CC BY-SA 4.0,裁切 29s + 响度归一 + 首尾 1s 交叉淡化
+cafe,咖啡馆,cafe.m4a,https://commons.wikimedia.org/wiki/File%3ARestaurant_ambience.ogg,stephan,Public domain,裁切 60s + 响度归一 + 首尾 1s 交叉淡化
+keyboard,键盘敲击,keyboard.m4a,https://commons.wikimedia.org/wiki/File%3AComputer_keyboard.ogg,russiandoll,Public domain,裁切 60s + 响度归一 + 首尾 1s 交叉淡化
+chimes,风铃,chimes.m4a,https://commons.wikimedia.org/wiki/File%3AWindglockenspiel.Koshi.ogg,Koshi / Wikimedia Commons,CC0,裁切 57s + 响度归一 + 首尾 1s 交叉淡化
+noise-white,白噪音,noise-white.m4a,本机合成（ffmpeg anoisesrc）,MixNoticeApp,无需授权（算法生成）,算法合成 60s
+noise-pink,粉噪音,noise-pink.m4a,本机合成（ffmpeg anoisesrc）,MixNoticeApp,无需授权（算法生成）,算法合成 60s
+noise-brown,棕噪音,noise-brown.m4a,本机合成（ffmpeg anoisesrc）,MixNoticeApp,无需授权（算法生成）,算法合成 60s
+dog-bark,狗叫,dog-bark.m4a,https://commons.wikimedia.org/wiki/File%3ABarking_dog_in_Rome.ogg," ‹a href=""//commons.wikimedia.org/wiki/User:Nicholas_Gemini"" title=""User:Nichola",CC BY-SA 3.0,裁切 + 响度归一 + 首尾 1s 交叉淡化
+chicken,鸡叫,chicken.m4a,https://commons.wikimedia.org/wiki/File%3AChickens_demanding_food.ogg,alys,Public domain,裁切 + 响度归一 + 首尾 1s 交叉淡化
+goose,鹅叫,goose.m4a,https://commons.wikimedia.org/wiki/File%3ACanada_Geese_%28Branta_canadensis%29_%28W1CDR0001421_BD11%29.ogg,,CC BY-SA 4.0,裁切 + 响度归一 + 首尾 1s 交叉淡化
+pond,池塘,pond.m4a,https://commons.wikimedia.org/wiki/File%3AAmbient_sound_small_pond_with_ducks_in_Berlin_2026-05-17.oga," ‹a href=""//commons.wikimedia.org/wiki/User:SchlurcherBot"" title=""User:Schlurche",CC BY-SA 4.0,裁切 + 响度归一 + 首尾 1s 交叉淡化
+bird-cuckoo,杜鹃,bird-cuckoo.m4a,https://commons.wikimedia.org/wiki/File%3ACommon_Cuckoo_%28Cuculus_canorus%29_%28W1CDR0001463_BD1%29.ogg,,CC BY-SA 4.0,裁切 + 响度归一 + 首尾 1s 交叉淡化
+bird-sparrow,麻雀,bird-sparrow.m4a,https://commons.wikimedia.org/wiki/File%3AHouse_Sparrows_chirping.ogg," ‹a href=""//commons.wikimedia.org/wiki/User:QWerk"" title=""User:QWerk"">QWerk ‹/a>",CC BY-SA 3.0,裁切 + 响度归一 + 首尾 1s 交叉淡化
+bird-nightingale,夜莺,bird-nightingale.m4a,https://commons.wikimedia.org/wiki/File%3ACommon_Nightingale%27s_song_2.ogg," ‹a href=""//commons.wikimedia.org/w/index.php?title=User:Digweed1&amp;action=edi",CC0,裁切 + 响度归一 + 首尾 1s 交叉淡化

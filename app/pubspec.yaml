@@ -1,0 +1,29 @@
+name: mixnotice
+description: MixNoticeApp - 自然声音混音 · 双端（V1.0 MVP）
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=3.4.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  audioplayers: ^6.1.0 # 多实例叠放 = 多轨混音
+  provider: ^6.1.2
+  shared_preferences: ^2.3.2 # 设置持久化
+  path_provider: ^2.1.4 # 方案 JSON 存储路径
+  window_manager: ^0.4.2 # 桌面端窗口（关闭最小化到托盘 FR-23）
+  system_tray: ^2.0.3 # 桌面托盘（FR-23）
+  audio_service: ^0.18.15 # Android 前台服务 + 媒体通知/锁屏控制（FR-21/22）
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/audio/
+    - assets/brand/

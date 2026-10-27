@@ -1,0 +1,33 @@
+# 构建产物与工具缓存
+app/build/
+app/.dart_tool/
+app/android/.gradle/
+app/windows/flutter/ephemeral/
+.flutter-plugins
+.flutter-plugins-dependencies
+GeneratedPluginRegistrant.*
+
+# Android 本地配置（含本机 SDK 路径）
+**/local.properties
+app/android/key.properties
+app/android/app/upload-keystore.*
+
+# 安装包与发布产物（正式发布请走 GitHub Releases）
+dist/
+*.apk
+*.aab
+
+# 日志与临时文件
+*.log
+app/candidates.json
+app/pubspec.yaml.bak
+
+# IDE / 系统
+*.iml
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# 工作区私有数据（AI 助手记忆等）
+.workbuddy/

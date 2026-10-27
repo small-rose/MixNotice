@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>MixNotice 品牌规范预览</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Segoe UI','Microsoft YaHei UI',sans-serif; background:#0F1512; color:#EAF2EC; padding:48px; }
+  h1 { font-size:22px; font-weight:600; letter-spacing:-.3px; }
+  .sub { color:#9DB3A6; font-size:13px; margin:6px 0 36px; }
+  h2 { font-size:14px; font-weight:600; color:#4CAF87; margin:32px 0 14px; letter-spacing:1px; }
+  .row { display:flex; gap:20px; flex-wrap:wrap; align-items:flex-end; }
+  .card { background:#1A241E; border:1px solid rgba(234,242,236,.08); border-radius:16px; padding:20px; }
+  .light { background:#F5F4EF; color:#1F2B25; }
+  .cap { font-size:11px; color:#9DB3A6; margin-top:12px; }
+  .light .cap { color:#6B7D74; }
+  img.icon { width:104px; height:104px; border-radius:24px; }
+  .swatches { display:flex; gap:10px; }
+  .sw { width:88px; }
+  .sw i { display:block; height:52px; border-radius:10px; }
+  .sw b { display:block; font-size:11px; font-weight:500; margin-top:6px; color:#9DB3A6; }
+  table { border-collapse:collapse; font-size:12px; color:#9DB3A6; }
+  td { padding:5px 18px 5px 0; }
+  td:first-child { color:#EAF2EC; font-weight:500; }
+</style>
+</head>
+<body>
+  <h1>MixNotice 品牌视觉 · 三叠浪 · 萤火一点</h1>
+  <div class="sub">概念：三条振幅递减的声波 = 多轨混音，由「有声」沉入「入静」，轮廓隐含 M（Mix）；右上琥珀点 = Notice（提醒 / 萤火）。</div>
+
+  <h2>应用图标</h2>
+  <div class="row">
+    <div class="card"><img class="icon" src="app-icon.svg"><div class="cap">主图标 104px</div></div>
+    <div class="card"><img class="icon" src="app-icon.svg" style="width:64px;height:64px;border-radius:15px"><div class="cap">64px</div></div>
+    <div class="card"><img class="icon" src="app-icon.svg" style="width:40px;height:40px;border-radius:9px"><div class="cap">40px（桌面/托盘）</div></div>
+    <div class="card"><img class="icon" src="app-icon.svg" style="width:24px;height:24px;border-radius:6px"><div class="cap">24px（最小可辨）</div></div>
+  </div>
+
+  <h2>组合标 / 单色标记</h2>
+  <div class="row">
+    <div class="card"><img src="lockup-dark.svg" style="height:64px"><div class="cap">横排组合标（深底）</div></div>
+    <div class="card"><img src="mark-dark.svg" style="width:72px;height:72px"><div class="cap">标记 · 深底 #4CAF87/#E8A854</div></div>
+    <div class="card light"><img src="mark-light.svg" style="width:72px;height:72px"><div class="cap">标记 · 浅底 #2E7D5C/#C77E2E</div></div>
+  </div>
+
+  <h2>品牌色板</h2>
+  <div class="swatches">
+    <div class="sw"><i style="background:#4CAF87"></i><b>夜林绿 · 主</b></div>
+    <div class="sw"><i style="background:#E8A854"></i><b>萤火琥珀 · 点缀</b></div>
+    <div class="sw"><i style="background:#0F1512"></i><b>夜林底</b></div>
+    <div class="sw"><i style="background:#1A241E"></i><b>卡面</b></div>
+    <div class="sw"><i style="background:#EAF2EC"></i><b>主文字</b></div>
+    <div class="sw"><i style="background:#F5F4EF"></i><b>浅底（晨雾）</b></div>
+  </div>
+
+  <h2>使用规则</h2>
+  <table>
+    <tr><td>留白</td><td>标记四周保留 ≥ 波峰振幅宽度（图标内约 10%）的净空</td></tr>
+    <tr><td>最小尺寸</td><td>标记 20px / 组合标 96px 宽，以下只用品标记</td></tr>
+    <tr><td>底色</td><td>深底用 mark-dark，浅底用 mark-light；禁止放在中饱和度底色上</td></tr>
+    <tr><td>禁止</td><td>拉伸变形、改波浪数量、给琥珀点换色（它是唯一暖色记忆点）</td></tr>
+    <tr><td>字体</td><td>组合标文字 Segoe UI 650/300 双字重对比；中文场景配思源黑体</td></tr>
+  </table>
+</body>
+</html>
