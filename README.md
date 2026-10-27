@@ -6,11 +6,11 @@
 
 ![platform](https://img.shields.io/badge/platform-Android%20%7C%20Windows-2E7D5C)
 ![flutter](https://img.shields.io/badge/Flutter-3.47+-4CAF87)
-![version](https://img.shields.io/badge/version-1.0.0--fix10-C77E2E)
+![version](https://img.shields.io/badge/version-1.0.0--r1-2E7D5C)
 ![license-sounds](https://img.shields.io/badge/sounds-CC0%20%2F%20CC%20BY%20%2F%20CC%20BY--SA-5C6B62)
 
 - 官网：<https://mix.zhangxiaocai.cn>
-- 下载：见 [Releases](../../releases)（Android APK，arm64-v8a）
+- 下载：见 [Releases](../../releases)（v1.0.0 提供 arm64 / armv7 / x86_64 三个架构包，正式签名）
 
 ---
 
@@ -40,9 +40,11 @@
 
 ## 📦 下载安装
 
-1. 从 [Releases](../../releases) 下载 APK（如 `MixNotice-v1.0.0-fix10-arm64-debug.apk`）
+1. 从 [Releases](../../releases) 下载 APK（v1.0.0 起：`MixNotice-v1.0.0-r1-<abi>-release-*.apk`，正式签名）
 2. 允许「安装未知来源应用」后安装（未上架商店前需要）
-3. 要求 Android 5.0+（API 21），arm64-v8a 设备（2016 年后绝大多数机型）
+3. 要求 Android 5.0+（API 21），架构包选择：arm64（推荐，2016 年后绝大多数机型）/ armv7（老设备）/ x86_64（模拟器）
+
+> ⚠️ v1.0.0 起使用正式签名，与早期 debug 签名的 fix 包不通用——装有旧 fix 包请先卸载再安装，之后可一直覆盖升级。
 
 > Windows 桌面端在路线图中，代码骨架已就位（`app/windows/`）。
 
@@ -100,6 +102,6 @@ tools\build_apk.bat -Tag fix11 -DryRun               :: 只看计划不构建
 
 ## 许可
 
-- 代码许可证：待定（建议 MIT，欢迎提 issue 讨论）
-- 音频素材：各自遵循上游 CC 许可，见授权清单
+- 代码：[MIT License](LICENSE)
+- 音频素材：**不受 MIT 覆盖**，各自遵循上游 CC 许可（CC0 / CC BY / CC BY-SA），逐条出处见 [docs/音频素材授权清单.csv](docs/音频素材授权清单.csv)
 - 官网与品牌资源：© zhangxiaocai.cn

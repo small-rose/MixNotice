@@ -20,7 +20,7 @@
     }
   ],
   "redirects": [
-    { "source": "/download", "destination": "https://dl.zhangxiaocai.cn/mixnotice/MixNotice-v1.0.0-fix10-arm64-debug.apk", "permanent": false },
-    { "source": "/apk", "destination": "https://dl.zhangxiaocai.cn/mixnotice/MixNotice-v1.0.0-fix10-arm64-debug.apk", "permanent": false }
+    { "source": "/download", "destination": "https://github.com/small-rose/MixNotice/releases", "permanent": false },
+    { "source": "/apk", "destination": "https://github.com/small-rose/MixNotice/releases", "permanent": false }
   ]
 }
