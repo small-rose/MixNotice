@@ -2,6 +2,12 @@
 处理链：裁切 → 响度归一(loudnorm I=-18) → 首尾 1s 交叉淡化 → AAC
 授权信息同步写入 docs/音频素材授权清单.csv
 用法：python tools/fetch_audio_assets.py
+
+注意（v1.1 起）：rain-light / rain-heavy / dog-bark / goose 已由
+preview/tools/build_candidates.py 重制为「事件编排 + PCM 波形级无缝循环」。
+重跑本脚本会把它们覆盖回 v1.0.0 的旧处理链（且雨声会重新出现 loudnorm 抽吸
+与循环割裂）。需要重建请改用 preview/tools/build_candidates.py；确需跑本脚本时，
+务必先备份 app/assets/audio/。
 """
 import csv
 import json

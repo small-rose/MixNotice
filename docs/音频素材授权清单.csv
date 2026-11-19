@@ -1,6 +1,6 @@
 ﻿音源ID,音源名,文件,来源页面,作者,授权,处理说明
-rain-light,小雨,rain-light.m4a,https://commons.wikimedia.org/wiki/File%3ARain_on_leaves_%28Gravity_Sound%29.wav,Gravity Sound,CC BY 4.0,裁切 60s + 响度归一 + 首尾 1s 交叉淡化
-rain-heavy,大雨,rain-heavy.m4a,https://commons.wikimedia.org/wiki/File%3AFalling_Rain_SFX_1_2016-11-19.oga,valvalion,CC BY 3.0,裁切 60s + 响度归一 + 首尾 1s 交叉淡化
+rain-light,小雨,rain-light.m4a,https://commons.wikimedia.org/wiki/File%3ARain_on_leaves_%28Gravity_Sound%29.wav,Gravity Sound,CC BY 4.0,v1.1 以 v1.0.0 现役成品为源；仅 PCM 层重做 50.25s 波形级无缝循环；不改 EQ 与响度
+rain-heavy,大雨,rain-heavy.m4a,https://commons.wikimedia.org/wiki/File%3AFalling_Rain_SFX_1_2016-11-19.oga,valvalion,CC BY 3.0,v1.1 以 v1.0.0 现役成品为源；仅 PCM 层重做 48.75s 波形级无缝循环；不改 EQ 与响度
 thunder,雷声,thunder.m4a,https://commons.wikimedia.org/wiki/File%3ARhumphries_-_rbh-thunder-storm.ogg,RHumphries,CC BY 3.0,裁切 60s + 响度归一 + 首尾 1s 交叉淡化
 wind,风,wind.m4a,https://commons.wikimedia.org/wiki/File%3AWind_sounds_2020-05-10_1625.mp3," ‹a href=""//commons.wikimedia.org/w/index.php?title=User:Robert_EA_Harvey&amp;ac",CC BY-SA 4.0,裁切 + 响度归一 + 首尾 1s 交叉淡化 + lowpass=f=2400
 stream,溪流,stream.m4a,https://commons.wikimedia.org/wiki/File%3A433589_jackthemurray_stream-river-water-up-close.wav,jackthemurray,CC0,裁切 60s + 响度归一 + 首尾 1s 交叉淡化
@@ -15,9 +15,14 @@ chimes,风铃,chimes.m4a,https://commons.wikimedia.org/wiki/File%3AWindglockensp
 noise-white,白噪音,noise-white.m4a,本机合成（ffmpeg anoisesrc）,MixNoticeApp,无需授权（算法生成）,算法合成 60s
 noise-pink,粉噪音,noise-pink.m4a,本机合成（ffmpeg anoisesrc）,MixNoticeApp,无需授权（算法生成）,算法合成 60s
 noise-brown,棕噪音,noise-brown.m4a,本机合成（ffmpeg anoisesrc）,MixNoticeApp,无需授权（算法生成）,算法合成 60s
-dog-bark,狗叫,dog-bark.m4a,https://commons.wikimedia.org/wiki/File%3ABarking_dog_in_Rome.ogg," ‹a href=""//commons.wikimedia.org/wiki/User:Nicholas_Gemini"" title=""User:Nichola",CC BY-SA 3.0,裁切 + 响度归一 + 首尾 1s 交叉淡化
-chicken,鸡叫,chicken.m4a,https://commons.wikimedia.org/wiki/File%3AChickens_demanding_food.ogg,alys,Public domain,裁切 + 响度归一 + 首尾 1s 交叉淡化
-goose,鹅叫,goose.m4a,https://commons.wikimedia.org/wiki/File%3ACanada_Geese_%28Branta_canadensis%29_%28W1CDR0001421_BD11%29.ogg,,CC BY-SA 4.0,裁切 + 响度归一 + 首尾 1s 交叉淡化
+dog-bark,狗叫,dog-bark.m4a,https://commons.wikimedia.org/wiki/File%3ABarking_dog_in_Rome.ogg," ‹a href=""//commons.wikimedia.org/wiki/User:Nicholas_Gemini"" title=""User:Nichola",CC BY-SA 3.0,v1.1 事件编排 100s（中密度/纯静音间隔）+ 环形相位旋转（起始 0.4s 出声、循环点不叠加静音）；素材同源
+rooster-crow,公鸡打鸣,rooster-crow.m4a,https://commons.wikimedia.org/wiki/File%3ASmall_rooster_crowing.ogg,alys,Public domain,v1.1 事件库素材之一；编排 120s 中密度纯静音间隔 + 环形相位旋转（起始 0.4s 出声、循环点不叠加静音）
+rooster-crow,公鸡打鸣,rooster-crow.m4a,https://commons.wikimedia.org/wiki/File%3AMedium_rooster_crowing.ogg,alys,Public domain,v1.1 事件库素材之一；同上
+rooster-crow,公鸡打鸣,rooster-crow.m4a,https://commons.wikimedia.org/wiki/File%3ARooster_crowing.ogg,Filo gèn',CC BY-SA 4.0,v1.1 事件库素材之一；同上
+hen-cackle,母鸡咯咯哒,hen-cackle.m4a,https://commons.wikimedia.org/wiki/File%3AHen_announcing_shes_lain_an_egg.ogg,alys,Public domain,v1.1 事件库素材之一；编排 110s 中密度纯静音间隔 + 环形相位旋转（起始 0.4s 出声、循环点不叠加静音）
+hen-cackle,母鸡咯咯哒,hen-cackle.m4a,https://commons.wikimedia.org/wiki/File%3AHens_leaving_coop.ogg,alys,Public domain,v1.1 事件库素材之一；同上
+hen-cackle,母鸡咯咯哒,hen-cackle.m4a,https://commons.wikimedia.org/wiki/File%3AChickens_demanding_food.ogg,alys,Public domain,v1.1 事件库素材之一（沿用 v1.0.0 现役鸡叫素材）；同上
+goose,鹅叫,goose.m4a,https://commons.wikimedia.org/wiki/File%3ACanada_Geese_%28Branta_canadensis%29_%28W1CDR0001421_BD11%29.ogg,,CC BY-SA 4.0,v1.1 事件编排 110s（中密度/纯静音间隔）+ 环形相位旋转（起始 0.4s 出声、循环点不叠加静音）；素材同源
 pond,池塘,pond.m4a,https://commons.wikimedia.org/wiki/File%3AAmbient_sound_small_pond_with_ducks_in_Berlin_2026-05-17.oga," ‹a href=""//commons.wikimedia.org/wiki/User:SchlurcherBot"" title=""User:Schlurche",CC BY-SA 4.0,裁切 + 响度归一 + 首尾 1s 交叉淡化
 bird-cuckoo,杜鹃,bird-cuckoo.m4a,https://commons.wikimedia.org/wiki/File%3ACommon_Cuckoo_%28Cuculus_canorus%29_%28W1CDR0001463_BD1%29.ogg,,CC BY-SA 4.0,裁切 + 响度归一 + 首尾 1s 交叉淡化
 bird-sparrow,麻雀,bird-sparrow.m4a,https://commons.wikimedia.org/wiki/File%3AHouse_Sparrows_chirping.ogg," ‹a href=""//commons.wikimedia.org/wiki/User:QWerk"" title=""User:QWerk"">QWerk ‹/a>",CC BY-SA 3.0,裁切 + 响度归一 + 首尾 1s 交叉淡化

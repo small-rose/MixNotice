@@ -31,10 +31,15 @@ const kSounds = <SoundSource>[
   SoundSource('campfire', '篝火', 'nature', 5),
   SoundSource('forest', '森林', 'nature', 4),
   SoundSource('night-crickets', '夜晚虫鸣', 'nature', 2),
-  // 田园（4）
+  // 田园（8）—— 原「鸡叫」拆成公鸡 / 母鸡两个独立音源
+  // v1.4：鸭叫下线；动物叫声全部带垫底噪；按「家禽→家畜→其他→环境」排序
+  SoundSource('rooster-crow', '公鸡', 'rural', 5),
+  SoundSource('hen-cackle', '母鸡', 'rural', 5),
   SoundSource('dog-bark', '狗叫', 'rural', 1),
-  SoundSource('chicken', '鸡叫', 'rural', 5),
   SoundSource('goose', '鹅叫', 'rural', 3),
+  SoundSource('cow-moo', '牛哞', 'rural', 7),
+  SoundSource('sheep-baa', '羊咩', 'rural', 2),
+  SoundSource('cat-meow', '猫叫', 'rural', 1),
   SoundSource('pond', '池塘', 'rural', 0),
   // 噪音（3）
   SoundSource('noise-white', '白噪音', 'noise', 6),
@@ -46,9 +51,14 @@ const kSounds = <SoundSource>[
   SoundSource('chimes', '风铃', 'life', 5),
 ];
 
+/// v1.1 兼容：v1.0.0 的自定义预设 / 已保存音轨里可能仍存着下线的 'chicken' id。
+/// 不映射的话 soundById 返回 null，音频引擎会兜底播放小雨，属于明显错音。
+const kLegacySourceAliases = <String, String>{'chicken': 'hen-cackle', 'duck-quack': 'pond', 'frog': 'pond'};
+
 SoundSource? soundById(String id) {
+  final resolved = kLegacySourceAliases[id] ?? id;
   for (final s in kSounds) {
-    if (s.id == id) return s;
+    if (s.id == resolved) return s;
   }
   return null;
 }
@@ -90,3 +100,37 @@ const kBuiltinPresets = <Preset>[
 const kMaxChannels = 6; // FR-08
 const kMaxCustomPresets = 20; // FR-13
 const kDefaultChannelVolume = 50; // FR-02/03 默认音量
+
+/// 新增音源：声音库卡片与组标题显示「新增」amber 徽标
+const kNewSourceIds = <String>{'cow-moo', 'sheep-baa', 'cat-meow'};
+
+/// 卡片状态副行文案（默认态展示；播放/已加入/试听由 UI 状态覆盖）
+const kSoundDesc = <String, String>{
+  'rain-light': '细密持续的雨声',
+  'rain-heavy': '磅礴大雨倾泻',
+  'thunder': '远处闷雷滚过',
+  'wind': '舒缓的风声',
+  'stream': '清浅溪水流动',
+  'waves': '海浪反复冲刷',
+  'birds': '清脆鸟鸣点缀',
+  'bird-cuckoo': '杜鹃「布谷」远鸣',
+  'bird-sparrow': '麻雀叽喳成群',
+  'bird-nightingale': '夜莺婉转鸣唱',
+  'campfire': '柴火噼啪燃烧',
+  'forest': '林间环境声',
+  'night-crickets': '夏夜虫鸣阵阵',
+  'dog-bark': '2~3 声连叫，间隔有长有短',
+  'rooster-crow': '清晨打鸣，一声悠长',
+  'hen-cackle': '产蛋后的咯咯哒',
+  'goose': '1~3 声一组',
+  'pond': '池塘蛙声与水珠',
+  'cow-moo': '低沉哞叫，间隔长',
+  'sheep-baa': '2~3 声连叫',
+  'cat-meow': '轻柔喵叫',
+  'noise-white': '均匀嘶嘶声',
+  'noise-pink': '柔和的低频粉噪',
+  'noise-brown': '低沉如瀑布',
+  'cafe': '环境人声与杯碟',
+  'keyboard': '机械键盘敲击',
+  'chimes': '风铃清脆作响',
+};

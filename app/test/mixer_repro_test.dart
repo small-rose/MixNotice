@@ -127,7 +127,12 @@ void main() {
   });
 
   testWidgets('回归：主题控制器 tokens 生效（强调色 + 冷暖）', (tester) async {
-    final tc = AppThemeController();
+    // 显式用深色「夜林」基准：雾蓝 #5B9BD5 对深色 surface 对比度 > 4.5，
+    // 对比度守卫不介入，才能断言 accent 原值透传。
+    // （默认基准是浅色「晨雾」，守卫会按浅色规则自动加深强调色，属设计内行为）
+    final tc = AppThemeController(
+      base: kBuiltinThemes.firstWhere((t) => t.id == 'night-forest'),
+    );
     final basePrimary = tc.tokens.primary;
     tc.setAccent(const Color(0xFF5B9BD5));
     expect(tc.tokens.primary, const Color(0xFF5B9BD5));

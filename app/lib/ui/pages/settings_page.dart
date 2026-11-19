@@ -73,7 +73,7 @@ class _SettingsPageState extends State<SettingsPage> {
             Text('白噪音混音 · 助眠', style: TextStyle(color: t.textSub, fontSize: 12)),
           ]),
         ),
-        _row(context, '版本', '1.0.0', null),
+        _row(context, '版本', '1.1.0', null),
         _row(context, '作者', '残阳丹落枫', null),
         _row(context, '开源许可', '查看', (ctx) => _showLicense(ctx)),
         _row(context, '音频素材授权', '查看清单', (ctx) => _showLicenses(ctx)),

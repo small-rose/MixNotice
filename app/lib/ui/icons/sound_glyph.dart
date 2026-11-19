@@ -96,10 +96,29 @@ List<Path> _build(String id) {
       return [_chimeBar(), _chime(8.0, 10.0), _chime(12.0, 13.4), _chime(16.0, 8.6)];
     case 'dog-bark':
       return [_dogHead(), _dogEars(), _dogFace(), _barkArcs(19.4, 15.4)];
+    case 'rooster-crow':
+      // 公鸡打鸣：母鸡轮廓 + 右侧打鸣声波
+      return [_henBody(), _henTail(), _henHead(), _henLegs(), _barkArcs(19.6, 11.2)];
+    case 'hen-cackle':
+      // 母鸡产蛋后咯咯哒：母鸡轮廓 + 左上提示点
+      return [_henBody(), _henTail(), _henHead(), _henLegs(), _sparkle(4.6, 4.6, 1.4)];
     case 'chicken':
+      // v1.1 起已下线，保留分支供旧预设里的 chicken id 正常显示图标
       return [_henBody(), _henTail(), _henHead(), _henLegs()];
     case 'goose':
       return [_gooseBody(), _gooseNeck(), _waterline()];
+    case 'cow-moo':
+      // 牛：弯角 + 圆头 + 鼻吻
+      return [_cowHorns(), _cowHead(), _cowMuzzle(), _cowEyes()];
+    case 'sheep-baa':
+      // 羊：蓬松卷毛 + 椭圆脸
+      return [_sheepWool(), _sheepFace(), _sheepEyes()];
+    case 'duck-quack':
+      // 鸭：浮水扁喙
+      return [_duckBody(), _duckNeck(), _waterline()];
+    case 'cat-meow':
+      // 猫：尖耳圆脸 + 胡须
+      return [_catEars(), _catHead(), _catWhiskers(), _catEyes()];
     case 'pond':
       return [_fish(), _fishTail(), _ripple(4.2, 17.6, 8.6), _ripple(12.6, 18.8, 7.0), _drop(9.0, 6.4), _drop(14.6, 5.4)];
     case 'bird-cuckoo':
@@ -400,6 +419,84 @@ Path _waterline() => Path()
   ..cubicTo(12.6, 19.6, 14.6, 21.2, 17.4, 20.4)
   ..cubicTo(18.8, 20.0, 19.8, 20.1, 21.0, 20.5);
 
+// ---- 牛：弯角 + 圆头 + 鼻吻 ----
+Path _cowHorns() => Path()
+  ..moveTo(6.6, 4.8)
+  ..cubicTo(5.0, 5.8, 4.6, 7.6, 5.2, 9.4)
+  ..moveTo(17.4, 4.8)
+  ..cubicTo(19.0, 5.8, 19.4, 7.6, 18.8, 9.4);
+
+Path _cowHead() => Path()
+  ..addOval(Rect.fromCenter(center: const Offset(12.0, 11.8), width: 10.6, height: 9.4));
+
+Path _cowMuzzle() => Path()
+  ..addOval(Rect.fromCenter(center: const Offset(12.0, 15.4), width: 6.0, height: 3.4));
+
+Path _cowEyes() => Path()
+  ..moveTo(9.6, 10.4)
+  ..lineTo(9.61, 10.41)
+  ..moveTo(14.4, 10.4)
+  ..lineTo(14.41, 10.41);
+
+// ---- 羊：蓬松卷毛 + 椭圆脸 ----
+Path _sheepWool() => Path()
+  ..moveTo(6.6, 7.8)
+  ..cubicTo(4.8, 6.2, 6.4, 3.4, 8.6, 4.4)
+  ..cubicTo(9.4, 2.8, 12.2, 2.6, 13.4, 4.0)
+  ..cubicTo(15.4, 2.8, 17.8, 4.2, 17.6, 6.0)
+  ..cubicTo(19.4, 6.8, 19.2, 9.4, 17.4, 10.2);
+
+Path _sheepFace() => Path()
+  ..addOval(Rect.fromCenter(center: const Offset(12.0, 14.0), width: 8.8, height: 8.0));
+
+Path _sheepEyes() => Path()
+  ..moveTo(10.2, 12.8)
+  ..lineTo(10.21, 12.81)
+  ..moveTo(13.8, 12.8)
+  ..lineTo(13.81, 12.81);
+
+// ---- 鸭：浮水扁喙 ----
+Path _duckBody() => Path()
+  ..addOval(Rect.fromCenter(center: const Offset(9.8, 15.4), width: 11.0, height: 6.6));
+
+Path _duckNeck() => Path()
+  ..moveTo(14.0, 14.0)
+  ..cubicTo(14.6, 11.6, 15.0, 9.6, 16.4, 8.4)
+  ..addOval(Rect.fromCircle(center: const Offset(17.6, 7.8), radius: 1.7))
+  ..moveTo(19.2, 7.4)
+  ..lineTo(21.2, 7.9)
+  ..lineTo(19.2, 8.5);
+
+// ---- 猫：尖耳圆脸 + 胡须 ----
+Path _catEars() => Path()
+  ..moveTo(7.0, 9.4)
+  ..lineTo(6.3, 4.6)
+  ..lineTo(10.2, 6.6)
+  ..moveTo(17.0, 9.4)
+  ..lineTo(17.7, 4.6)
+  ..lineTo(13.8, 6.6);
+
+Path _catHead() => Path()
+  ..addOval(Rect.fromCenter(center: const Offset(12.0, 13.8), width: 10.6, height: 9.6));
+
+Path _catWhiskers() => Path()
+  ..moveTo(3.4, 13.0)
+  ..lineTo(6.4, 13.2)
+  ..moveTo(17.6, 13.2)
+  ..lineTo(20.6, 13.0)
+  ..moveTo(4.2, 15.4)
+  ..lineTo(6.8, 15.0)
+  ..moveTo(17.2, 15.0)
+  ..lineTo(19.8, 15.4);
+
+Path _catEyes() => Path()
+  ..moveTo(9.8, 12.4)
+  ..lineTo(9.81, 12.41)
+  ..moveTo(14.2, 12.4)
+  ..lineTo(14.21, 12.41)
+  ..moveTo(11.4, 14.2)
+  ..quadraticBezierTo(12.0, 14.8, 12.6, 14.2);
+
 // ---- 池塘：鱼 + 水波 + 水珠 ----
 Path _fish() => Path()
   ..moveTo(6.2, 11.6)
@@ -477,3 +574,4 @@ Path _note() => Path()
   ..moveTo(20.05, 6.5)
   ..lineTo(20.05, 2.9)
   ..cubicTo(21.0, 3.3, 21.3, 4.1, 20.9, 4.8);
+

@@ -90,10 +90,10 @@ void main() {
     await tester.pumpWidget(_wrap(pb, const LibraryPage()));
     await tester.pumpAndSettle();
 
-    // 卡片高度恒为 112（SliverGridDelegateWithMaxCrossAxisExtent.mainAxisExtent）
+    // 卡片高度恒为 116（SliverGridDelegateWithMaxCrossAxisExtent.mainAxisExtent，v1.2 含状态副行与循环进度条）
     final grid = tester.widget<GridView>(find.byType(GridView).first);
     final d = grid.gridDelegate as SliverGridDelegateWithMaxCrossAxisExtent;
-    expect(d.mainAxisExtent, 112);
+    expect(d.mainAxisExtent, 116);
     expect(d.maxCrossAxisExtent, lessThanOrEqualTo(200));
   });
 

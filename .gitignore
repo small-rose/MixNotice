@@ -31,3 +31,7 @@ Thumbs.db
 
 # 工作区私有数据（AI 助手记忆等）
 .workbuddy/
+
+# 本地工作产物（音频备份、预览站点）
+backup/
+preview/

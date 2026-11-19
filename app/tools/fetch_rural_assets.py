@@ -5,6 +5,11 @@
 3) 新增鸟种：bird-cuckoo 杜鹃 / bird-sparrow 麻雀 / bird-nightingale 夜莺(CC0)。
 授权信息合并进 docs/音频素材授权清单.csv（按音源 ID 更新，不动其他行）。
 用法：python tools/fetch_rural_assets.py [--only id1,id2]
+
+注意（v1.1 起）：田园音源已改版——dog-bark / goose 换成事件编排版，
+chicken 下线并由 rooster-crow + hen-cackle 两个新音源替代。
+本脚本的 PICKS 仍是 v1.0.0 的旧清单，重跑会覆盖现役资产并写回旧授权行。
+重建请改用 preview/tools/build_candidates.py。
 """
 import csv
 import importlib.util
