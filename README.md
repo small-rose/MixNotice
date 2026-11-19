@@ -6,11 +6,11 @@
 
 ![platform](https://img.shields.io/badge/platform-Android%20%7C%20Windows-2E7D5C)
 ![flutter](https://img.shields.io/badge/Flutter-3.47+-4CAF87)
-![version](https://img.shields.io/badge/version-1.0.0--r1-2E7D5C)
+![version](https://img.shields.io/badge/version-1.1.0--r1-2E7D5C)
 ![license-sounds](https://img.shields.io/badge/sounds-CC0%20%2F%20CC%20BY%20%2F%20CC%20BY--SA-5C6B62)
 
 - 官网：<https://mix.zhangxiaocai.cn>
-- 下载：见 [Releases](../../releases)（v1.0.0 提供 arm64 / armv7 / x86_64 三个架构包，正式签名）
+- 下载：见 [Releases](../../releases)（v1.1.0 提供 arm64 / armv7 / x86_64 三个架构包，正式签名）
 
 ---
 
@@ -25,12 +25,12 @@
 | 💾 **100% 本地** | 无账号体系、无埋点上报、无第三方 SDK，卸载即无痕 |
 | 🖥️ **Windows 桌面端** | 同一套 Flutter 代码，系统托盘常驻 |
 
-## 🌿 声音库（23 个真实音源）
+## 🌿 声音库（27 个真实音源）
 
 | 分组 | 音源 |
 |---|---|
 | 🌿 自然（13） | 小雨、大雨、雷声、风、溪流、海浪、鸟鸣、杜鹃、麻雀、夜莺、篝火、森林、夜晚虫鸣 |
-| 🚜 田园（4） | 狗叫、鸡叫、鹅叫、池塘 |
+| 🚜 田园（8） | 公鸡、母鸡、狗叫、鹅叫、牛哞、羊咩、猫叫、池塘 |
 | 🌫️ 噪音（3） | 白噪音、粉噪音、棕噪音 |
 | 🏙️ 生活（3） | 咖啡馆、键盘敲击、风铃 |
 
@@ -40,7 +40,7 @@
 
 ## 📦 下载安装
 
-1. 从 [Releases](../../releases) 下载 APK（v1.0.0 起：`MixNotice-v1.0.0-r1-<abi>-release-*.apk`，正式签名）
+1. 从 [Releases](../../releases) 下载 APK（v1.1.0 起：`MixNotice-v1.1.0-r1-<abi>-release-*.apk`，正式签名）
 2. 允许「安装未知来源应用」后安装（未上架商店前需要）
 3. 要求 Android 5.0+（API 21），架构包选择：arm64（推荐，2016 年后绝大多数机型）/ armv7（老设备）/ x86_64（模拟器）
 
@@ -77,7 +77,7 @@ tools\build_apk.bat -Tag fix11 -DryRun               :: 只看计划不构建
 ├── app/                    # Flutter 主工程
 │   ├── lib/                # 源码（ui / theme / services / core）
 │   ├── test/               # 布局回归、主题锁定、Logo 渲染等测试
-│   ├── assets/             # 23 个成品音源（m4a）+ 品牌图
+│   ├── assets/             # 27 个成品音源（m4a）+ 品牌图
 │   ├── assets_src/         # 原始授权素材（ogg/mp3，处理前的素材）
 │   ├── android/            # 安卓工程（自适应图标、前台服务）
 │   ├── windows/  ios/      # 桌面 / iOS 工程骨架（路线图）
@@ -95,10 +95,33 @@ tools\build_apk.bat -Tag fix11 -DryRun               :: 只看计划不构建
 
 ## 🗺️ 路线图
 
-- [x] Android arm64（v1.0）
+- [x] Android arm64 / armv7 / x86_64（v1.0 起）
 - [ ] Windows 桌面端打磨与发布
 - [ ] iOS 版本
 - [ ] 自定义音源导入
+
+## 📜 更新日志
+
+### v1.1.0（2026-11-19）
+
+**新增**
+- 田园音源 4 → 8：新增公鸡、母鸡、牛哞、羊咩、猫叫；原「鸡叫」拆分为公鸡 / 母鸡，「鸭叫」下线
+- 声音库卡片副行文案（每个音源一句话描述）与「新增」amber 徽标
+- 动物音源专属线性图标，分组按「家禽 → 家畜 → 其他 → 环境」重排序
+
+**优化**
+- 音效素材重制：狗叫、鹅叫、大小雨替换为更长高品质版本，动物叫声统一垫底噪
+- 旧配置兼容：v1.0.0 预设 / 音轨中下线音源 ID 自动映射（chicken → 母鸡，duck-quack / frog → 池塘），不错音
+- 声音库页面重构，29 项测试全绿
+
+> 完整发布说明见 [docs/RELEASE_NOTES-v1.1.0.md](docs/RELEASE_NOTES-v1.1.0.md)。
+
+### v1.0.0（2026-10-27）
+
+- 首个正式版：6 轨混音台、23 个真实音源、8 组内置方案、睡眠 / 休息倒计时、后台播放、4 套主题与导入导出
+- 正式签名密钥，提供 arm64 / armv7 / x86_64 三架构包
+
+> 完整发布说明见 [docs/RELEASE_NOTES-v1.0.0.md](docs/RELEASE_NOTES-v1.0.0.md)。
 
 ## 许可
 

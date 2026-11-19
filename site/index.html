@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MixNotice · 混一场自然声，睡一个好觉</title>
-<meta name="description" content="MixNotice 是一款自然声音混音 App：23 个真实采集的自然音源、6 轨自由混音、8 组内置方案、睡眠倒计时与后台播放。数据全部保存在本地，开箱即用。">
+<meta name="description" content="MixNotice 是一款自然声音混音 App：27 个真实采集的自然音源、6 轨自由混音、8 组内置方案、睡眠倒计时与后台播放。数据全部保存在本地，开箱即用。">
 <meta property="og:title" content="MixNotice · 混一场自然声，睡一个安稳觉">
-<meta property="og:description" content="23 个真实自然音源 · 6 轨混音 · 睡眠倒计时 · 100% 本地存储。Android 免费下载。">
+<meta property="og:description" content="27 个真实自然音源 · 6 轨混音 · 睡眠倒计时 · 100% 本地存储。Android 免费下载。">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://mix.zhangxiaocai.cn/">
 <meta property="og:image" content="https://mix.zhangxiaocai.cn/assets/icon-1024.png">
@@ -111,6 +111,8 @@ header{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
   border:1px solid var(--line);background:var(--surface);font-size:13.5px;color:var(--ink);transition:.2s}
 .snd:hover{border-color:var(--primary);transform:translateY(-1px)}
 .snd .dot{width:7px;height:7px;border-radius:50%}
+.new-badge{font-size:9px;font-weight:700;letter-spacing:.5px;color:var(--amber);
+  background:var(--amber-soft);border-radius:6px;padding:2px 5px;margin-left:2px}
 .snd.preset{background:var(--surface2)}
 .snd svg{width:15px;height:15px;stroke:var(--primary);fill:none;stroke-width:1.8;
   stroke-linecap:round;stroke-linejoin:round;flex:none}
@@ -189,7 +191,7 @@ footer a{color:var(--muted)} footer a:hover{color:var(--primary)}
       <a class="btn btn-ghost" href="#demo">▶ 先试听一下</a>
     </div>
     <div class="stats">
-      <span><b>23</b><small>真实音源</small></span>
+      <span><b>27</b><small>真实音源</small></span>
       <span><b>6</b><small>轨混音</small></span>
       <span><b>8</b><small>内置方案</small></span>
       <span><b>0</b><small>数据上传</small></span>
@@ -251,7 +253,7 @@ footer a{color:var(--muted)} footer a:hover{color:var(--primary)}
 <!-- ================= SOUNDS ================= -->
 <section id="sounds">
   <div class="wrap">
-    <h2 class="reveal">23 个真实音源 · 四组声音</h2>
+    <h2 class="reveal">27 个真实音源 · 四组声音</h2>
     <p class="sub reveal">全部来自 Wikimedia Commons 等平台的 CC 授权真实录音，经响度归一化与无缝循环处理。</p>
 
     <div class="group reveal">
@@ -274,11 +276,15 @@ footer a{color:var(--muted)} footer a:hover{color:var(--primary)}
     </div>
 
     <div class="group reveal">
-      <h3>🚜 田园 <span class="cnt">4</span></h3>
+      <h3>🚜 田园 <span class="cnt">8</span></h3>
       <div class="sound-grid">
+        <span class="snd"><span class="dot" style="background:#D96C4E"></span>公鸡<b class="new-badge">NEW</b></span>
+        <span class="snd"><span class="dot" style="background:#C79A5E"></span>母鸡<b class="new-badge">NEW</b></span>
         <span class="snd"><span class="dot" style="background:#C77E2E"></span>狗叫</span>
-        <span class="snd"><span class="dot" style="background:#D9994E"></span>鸡叫</span>
         <span class="snd"><span class="dot" style="background:#B8894E"></span>鹅叫</span>
+        <span class="snd"><span class="dot" style="background:#8A6B4E"></span>牛哞<b class="new-badge">NEW</b></span>
+        <span class="snd"><span class="dot" style="background:#B8A88F"></span>羊咩<b class="new-badge">NEW</b></span>
+        <span class="snd"><span class="dot" style="background:#9C8AC4"></span>猫叫<b class="new-badge">NEW</b></span>
         <span class="snd"><span class="dot" style="background:#6FA88F"></span>池塘</span>
       </div>
     </div>
@@ -331,13 +337,13 @@ footer a{color:var(--muted)} footer a:hover{color:var(--primary)}
     <div class="dl-card reveal">
       <img class="dl-icon" src="assets/icon-1024.png" alt="MixNotice 图标" loading="lazy">
       <div class="dl-info">
-        <h3>MixNotice <span style="color:var(--muted);font-size:14px;font-weight:400">v1.0.0 · 正式版</span></h3>
-        <div class="dl-meta">APK · 35.6 MB 起 · 三种架构 · Android 5.0+ · 免费无广告</div>
+        <h3>MixNotice <span style="color:var(--muted);font-size:14px;font-weight:400">v1.1.0 · 正式版</span></h3>
+        <div class="dl-meta">APK · 44 MB 起 · 三种架构 · Android 5.0+ · 免费无广告</div>
         <div class="dl-actions">
           <a class="btn btn-primary" id="dlBtn" href="https://github.com/small-rose/MixNotice/releases" target="_blank" rel="noopener">⬇ 下载 APK</a>
           <a class="btn btn-ghost" href="privacy.html">隐私政策</a>
         </div>
-        <p class="dl-note">当前包为 arm64 架构（覆盖 2016 年后绝大多数安卓手机）；iOS 与桌面版在路线图中。</p>
+        <p class="dl-note">当前包为 arm64 架构（覆盖 2016 年后绝大多数安卓手机）；v1.1.0 新增公鸡、母鸡、牛哞、羊咩、猫叫 5 种田园音源；iOS 与桌面版在路线图中。</p>
       </div>
     </div>
   </div>
