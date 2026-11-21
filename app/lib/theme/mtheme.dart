@@ -7,7 +7,7 @@ import 'app_themes.dart' show BuiltinTheme;
 
 /// ============================================================
 /// .mtheme 主题文件（L2 扩展）+ 对比度守卫
-/// 规范来源：《UI设计规范-MixNoticeApp-v1.1.md》第八章 8.2 / 8.3
+/// 规范来源：《UI设计规范-SoughMixApp-v1.1.md》第八章 8.2 / 8.3
 /// 规则：
 ///  - schemaVersion 向后兼容；缺省 token 回落基准主题（不白屏）
 ///  - primary 对 surface 对比度 < 4.5:1 时自动校正（禁止不可读主题生效）

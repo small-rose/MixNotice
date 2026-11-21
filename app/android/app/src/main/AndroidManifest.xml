@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
 
     <application
-        android:label="MixNotice"
+        android:label="枕声"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
@@ -26,11 +26,37 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
+            <!-- 桌面入口由 activity-alias 提供（支持深/浅双图标切换），
+                 MainActivity 自身不带 LAUNCHER filter，避免切换后出现双图标 -->
+        </activity>
+
+        <!-- 桌面图标 · 深色版（默认，保持与旧版安装相同的入口名，升级后快捷方式不失效） -->
+        <activity-alias
+            android:name=".LauncherMain"
+            android:targetActivity=".MainActivity"
+            android:exported="true"
+            android:enabled="true"
+            android:icon="@mipmap/ic_launcher"
+            android:label="枕声">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
+        </activity-alias>
+
+        <!-- 桌面图标 · 浅色版（设置-品牌 里切换，PackageManager 动态启停） -->
+        <activity-alias
+            android:name=".LauncherLight"
+            android:targetActivity=".MainActivity"
+            android:exported="true"
+            android:enabled="false"
+            android:icon="@mipmap/ic_launcher_light"
+            android:label="枕声">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
 
         <!-- audio_service：媒体前台服务（通知栏播放信息 + 锁屏控制） -->
         <service
@@ -41,6 +67,12 @@
                 <action android:name="android.media.browse.MediaBrowserService"/>
             </intent-filter>
         </service>
+
+        <!-- 播放器后台卡片：通知栏 + 锁屏的 MediaStyle 控制台 -->
+        <service
+            android:name=".MediaNotificationService"
+            android:exported="false"
+            android:foregroundServiceType="mediaPlayback" />
 
         <!-- 耳机线控 / 蓝牙按键 -->
         <receiver

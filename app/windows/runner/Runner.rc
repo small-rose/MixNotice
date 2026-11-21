@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.mixnotice" "\0"
-            VALUE "FileDescription", "mixnotice" "\0"
+            VALUE "CompanyName", "com.soughmix" "\0"
+            VALUE "FileDescription", "SoughMix" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "mixnotice" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2026 com.mixnotice. All rights reserved." "\0"
-            VALUE "OriginalFilename", "mixnotice.exe" "\0"
-            VALUE "ProductName", "mixnotice" "\0"
+            VALUE "InternalName", "soughmix" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2026 com.soughmix. All rights reserved." "\0"
+            VALUE "OriginalFilename", "soughmix.exe" "\0"
+            VALUE "ProductName", "SoughMix" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

@@ -1,4 +1,4 @@
-# MixNotice 官网部署指南
+# 枕声 SoughMix 官网部署指南
 
 域名：`mix.zhangxiaocai.cn`（纯静态，`site/` 目录即整站，零构建）
 
@@ -50,7 +50,7 @@ vercel --prod
 ## 四、上线前检查清单
 
 - [ ] 替换 `index.html` 页脚的 ICP 备案号占位（`.cn` 域名解析到境外服务器暂不强制备案，但建议完成备案）
-- [x] 下载链接指向 GitHub Releases（`index.html` 的 `#dlBtn`、`_redirects`、`vercel.json` 均已指向 `https://github.com/small-rose/MixNotice/releases`）
+- [x] 下载链接指向 GitHub Releases（`index.html` 的 `#dlBtn`、`_redirects`、`vercel.json` 均已指向 `https://github.com/small-rose/SoughMix/releases`）
 - [ ] 发布新版本时：APK 传到 Releases 对应 tag，并补充 SHA-1 到发布说明（见 `downloads/README.txt`）
 - [ ] 把 `docs/音频素材授权清单.csv` 上传并在首页「素材授权」链接指向它
 - [ ] 确认 `https://mix.zhangxiaocai.cn/robots.txt`、`sitemap.xml` 可访问

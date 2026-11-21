@@ -26,7 +26,9 @@ android {
             }
         }
     }
-    namespace = "com.mixnotice.mixnotice"
+    // 品牌统一为 SoughMix：包名/通道 ID 全部使用 com.soughmix.app。
+    // 通知改为 Native 自建后不再依赖 audio_service 按旧包名识别媒体通道，改包名安全。
+    namespace = "com.soughmix.app"
     compileSdk = flutter.compileSdkVersion
     ndkVersion = flutter.ndkVersion
 
@@ -36,8 +38,7 @@ android {
     }
 
     defaultConfig {
-        // TODO: Specify your own unique Application ID (https://developer.android.com/studio/build/application-id.html).
-        applicationId = "com.mixnotice.mixnotice"
+        applicationId = "com.soughmix.app"
         // You can update the following values to match your application needs.
         // For more information, see: https://flutter.dev/to/review-gradle-config.
         minSdk = flutter.minSdkVersion
@@ -67,6 +68,11 @@ kotlin {
     compilerOptions {
         jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
     }
+}
+
+dependencies {
+    // 播放器后台卡片：原生 MediaSessionCompat + MediaStyle 通知
+    implementation("androidx.media:media:1.7.0")
 }
 
 flutter {

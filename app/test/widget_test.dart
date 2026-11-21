@@ -1,6 +1,6 @@
 // 冒烟测试：核心目录数据完整性（FR-01 四组 27 音源、FR-10 八个预设）
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mixnotice/core/constants.dart';
+import 'package:sough_mix/core/constants.dart';
 
 void main() {
   test('音源目录：27 个音源、四组齐全、素材路径唯一', () {

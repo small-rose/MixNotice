@@ -18,7 +18,7 @@ import urllib.parse
 import urllib.request
 
 API = "https://commons.wikimedia.org/w/api.php"
-UA = {"User-Agent": "MixNoticeApp/1.0 (audio asset pipeline)"}
+UA = {"User-Agent": "SoughMix/1.0 (audio asset pipeline)"}
 SRC = "assets_src"
 OUT = "assets/audio"
 FFMPEG = r"E:/Apps/ffmpeg-n4.3.1-20-win64/bin/ffmpeg"
@@ -178,7 +178,7 @@ def main():
             gen_noise(sid.replace("noise-", ""), amp, out)
             print(f"[生成] {sid}.m4a (ffmpeg anoisesrc 合成)")
             rows.append([sid, cn, f"{sid}.m4a", "本机合成（ffmpeg anoisesrc）",
-                         "MixNoticeApp", "无需授权（算法生成）", "算法合成 60s"])
+                         "SoughMix", "无需授权（算法生成）", "算法合成 60s"])
         except Exception as e:  # noqa: BLE001
             print(f"[失败] {sid}: {e}", file=sys.stderr)
 

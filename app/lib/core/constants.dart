@@ -14,7 +14,7 @@ class SoundSource {
   String get asset => 'assets/audio/$id.m4a';
 }
 
-const kSoundGroups = {'nature': '自然', 'rural': '田园', 'noise': '噪音', 'life': '生活'};
+const kSoundGroups = {'nature': '自然', 'rural': '田园', 'life': '生活', 'noise': '噪音'};
 
 const kSounds = <SoundSource>[
   // 自然（13）
@@ -41,14 +41,14 @@ const kSounds = <SoundSource>[
   SoundSource('sheep-baa', '羊咩', 'rural', 2),
   SoundSource('cat-meow', '猫叫', 'rural', 1),
   SoundSource('pond', '池塘', 'rural', 0),
-  // 噪音（3）
-  SoundSource('noise-white', '白噪音', 'noise', 6),
-  SoundSource('noise-pink', '粉噪音', 'noise', 6),
-  SoundSource('noise-brown', '棕噪音', 'noise', 6),
   // 生活（3）
   SoundSource('cafe', '咖啡馆', 'life', 7),
   SoundSource('keyboard', '键盘敲击', 'life', 7),
   SoundSource('chimes', '风铃', 'life', 5),
+  // 噪音（3）
+  SoundSource('noise-white', '白噪音', 'noise', 6),
+  SoundSource('noise-pink', '粉噪音', 'noise', 6),
+  SoundSource('noise-brown', '棕噪音', 'noise', 6),
 ];
 
 /// v1.1 兼容：v1.0.0 的自定义预设 / 已保存音轨里可能仍存着下线的 'chicken' id。
@@ -77,12 +77,12 @@ class Preset {
   const Preset(this.id, this.name, {required this.builtin, required this.tracks});
 }
 
-/// 预设方案 8 个（FR-10）
+/// 预设方案 11 个（FR-10；v1.2 优化：田园组入列 + 助眠音源补齐）
 const kBuiltinPresets = <Preset>[
   Preset('p-rain-fire', '雨天篝火', builtin: true,
       tracks: [PresetTrack('rain-light', 72), PresetTrack('campfire', 55)]),
   Preset('p-forest-morning', '森林晨间', builtin: true,
-      tracks: [PresetTrack('birds', 60), PresetTrack('wind', 35), PresetTrack('forest', 40)]),
+      tracks: [PresetTrack('birds', 55), PresetTrack('wind', 30), PresetTrack('forest', 40), PresetTrack('bird-nightingale', 25)]),
   Preset('p-sea-night', '海边夜晚', builtin: true,
       tracks: [PresetTrack('waves', 80), PresetTrack('wind', 25)]),
   Preset('p-rain-thunder', '雨夜雷声', builtin: true,
@@ -92,9 +92,16 @@ const kBuiltinPresets = <Preset>[
   Preset('p-white-focus', '白噪音专注', builtin: true,
       tracks: [PresetTrack('noise-white', 60), PresetTrack('rain-light', 40)]),
   Preset('p-cafe-noon', '咖啡馆午后', builtin: true,
-      tracks: [PresetTrack('cafe', 75), PresetTrack('chimes', 20)]),
+      tracks: [PresetTrack('cafe', 70), PresetTrack('chimes', 20), PresetTrack('keyboard', 15)]),
   Preset('p-cricket-summer', '虫鸣夏夜', builtin: true,
-      tracks: [PresetTrack('night-crickets', 70), PresetTrack('wind', 20)]),
+      tracks: [PresetTrack('night-crickets', 65), PresetTrack('pond', 35), PresetTrack('wind', 20)]),
+  // v1.2 新增：田园组 + 助眠音源补齐
+  Preset('p-pasture-dusk', '牧场黄昏', builtin: true,
+      tracks: [PresetTrack('cow-moo', 35), PresetTrack('sheep-baa', 30), PresetTrack('wind', 25)]),
+  Preset('p-farm-morning', '农家清晨', builtin: true,
+      tracks: [PresetTrack('rooster-crow', 35), PresetTrack('hen-cackle', 30), PresetTrack('stream', 30)]),
+  Preset('p-pink-sleep', '粉噪深眠', builtin: true,
+      tracks: [PresetTrack('noise-pink', 60), PresetTrack('campfire', 30)]),
 ];
 
 const kMaxChannels = 6; // FR-08

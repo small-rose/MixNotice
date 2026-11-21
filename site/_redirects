@@ -1,4 +1,4 @@
 # Cloudflare Pages redirects
 # APK 超过 25MB 托管上限，/download 302 到对象存储直链（换成真实地址）
-/download   https://github.com/small-rose/MixNotice/releases   302
-/apk        https://github.com/small-rose/MixNotice/releases   302
+/download   https://github.com/small-rose/SoughMix/releases   302
+/apk        https://github.com/small-rose/SoughMix/releases   302

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 620 144" width="620" height="144">
-  <!-- MixNotice 横排组合标（深底） -->
+  <!-- 枕声 SoughMix 横排组合标（深底） -->
   <g transform="translate(0,0)" width="144" height="144">
     <g fill="none" stroke="#4CAF87" stroke-linecap="round">
       <path d="M38 66 q8.5 -11 17 0 q8.5 11 17 0 q8.5 -11 17 0 q8.5 11 17 0" stroke-width="8" opacity="1"/>
@@ -9,6 +9,6 @@
     <circle cx="84" cy="47" r="6" fill="#E8A854"/>
   </g>
   <text x="152" y="94" font-family="'Segoe UI','PingFang SC','Microsoft YaHei UI',sans-serif" font-size="58" letter-spacing="-1">
-    <tspan font-weight="650" fill="#EAF2EC">Mix</tspan><tspan font-weight="300" fill="#EAF2EC" opacity=".82">Notice</tspan>
+    <tspan font-weight="650" fill="#EAF2EC">Sough</tspan><tspan font-weight="300" fill="#EAF2EC" opacity=".82">Mix</tspan>
   </text>
 </svg>

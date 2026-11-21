@@ -3,18 +3,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:provider/provider.dart';
 
-import 'package:mixnotice/audio/audio_engine.dart';
-import 'package:mixnotice/audio/playback_controller.dart';
-import 'package:mixnotice/core/constants.dart';
-import 'package:mixnotice/data/models.dart';
-import 'package:mixnotice/data/preset_controller.dart';
-import 'package:mixnotice/data/preset_repository.dart';
-import 'package:mixnotice/theme/app_themes.dart';
-import 'package:mixnotice/theme/app_tokens.dart';
-import 'package:mixnotice/theme/theme_controller.dart';
-import 'package:mixnotice/ui/pages/library_page.dart';
-import 'package:mixnotice/ui/pages/mixer_page.dart';
-import 'package:mixnotice/ui/widgets/mini_player.dart';
+import 'package:sough_mix/audio/audio_engine.dart';
+import 'package:sough_mix/audio/playback_controller.dart';
+import 'package:sough_mix/core/constants.dart';
+import 'package:sough_mix/data/models.dart';
+import 'package:sough_mix/data/preset_controller.dart';
+import 'package:sough_mix/data/preset_repository.dart';
+import 'package:sough_mix/theme/app_themes.dart';
+import 'package:sough_mix/theme/app_tokens.dart';
+import 'package:sough_mix/theme/theme_controller.dart';
+import 'package:sough_mix/ui/pages/library_page.dart';
+import 'package:sough_mix/ui/pages/mixer_page.dart';
+import 'package:sough_mix/ui/widgets/mini_player.dart';
 
 PlaybackController _pb() => PlaybackController(_FakeAudioEngine());
 

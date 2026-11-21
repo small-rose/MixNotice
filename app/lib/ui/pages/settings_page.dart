@@ -6,13 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
+import '../../core/app_version.dart';
 import '../../data/preset_controller.dart';
 import '../../data/settings_repository.dart';
+import '../../services/launcher_icon.dart' show LauncherIcon;
+import '../../services/now_playing.dart' show NowPlaying;
 import '../../theme/app_themes.dart';
 import '../../theme/app_tokens.dart';
 import '../../theme/mtheme.dart';
 import '../../theme/theme_controller.dart';
-import '../icons/mixnotice_logo.dart';
+import '../icons/soughmix_logo.dart';
 
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
@@ -37,8 +40,11 @@ class _SettingsPageState extends State<SettingsPage> {
         title: Text('设置', style: TextStyle(color: t.text, fontSize: 22, fontWeight: FontWeight.w600)),
       ),
       body: ListView(padding: const EdgeInsets.fromLTRB(20, 8, 20, 32), children: [
+        _logoThemeSection(context, settings),
         _appearance(context, tc),
         _section(context, '播放'),
+        // 通知栏/锁屏控制：点开显示完整诊断（权限/channel 重要性/媒体会话），定位 ROM 降权
+        _row(context, '通知栏控制', '查看诊断', (ctx) => _showNotificationDiagnostics(ctx)),
         _row(context, '音质', _qualityLabel(settings.quality), (ctx) async {
           final q = await _pick(ctx, '音质', const {'standard': '标准（96kbps）', 'high': '高质量（128kbps）'}, settings.quality);
           if (q != null) _update(settings..quality = q); // FR-24：下次播放生效
@@ -65,15 +71,15 @@ class _SettingsPageState extends State<SettingsPage> {
         Padding(
           padding: const EdgeInsets.only(bottom: 10),
           child: Row(children: [
-            // 矢量自绘：波浪取主色 token、圆点取琥珀 token，跟随四套主题与自定义强调色
-            const MixNoticeLogo(size: 30),
+            // 矢量自绘：默认波浪取主色、圆点取琥珀；「品牌标记」里可强制深/浅变体
+            SoughMixLogo(size: 30, style: _logoStyleOf(settings.logoTheme)),
             const SizedBox(width: 10),
-            Text('MixNotice', style: TextStyle(color: t.text, fontSize: 16.5, fontWeight: FontWeight.w600, letterSpacing: -0.2)),
+            Text('枕声 · SoughMix', style: TextStyle(color: t.text, fontSize: 16, fontWeight: FontWeight.w500, letterSpacing: -0.2)),
             const SizedBox(width: 8),
-            Text('白噪音混音 · 助眠', style: TextStyle(color: t.textSub, fontSize: 12)),
+            Text('混音 · 助眠', style: TextStyle(color: t.textSub, fontSize: 12)),
           ]),
         ),
-        _row(context, '版本', '1.1.0', null),
+        _row(context, '版本', kAppVersion, null),
         _row(context, '作者', '残阳丹落枫', null),
         _row(context, '开源许可', '查看', (ctx) => _showLicense(ctx)),
         _row(context, '音频素材授权', '查看清单', (ctx) => _showLicenses(ctx)),
@@ -83,6 +89,70 @@ class _SettingsPageState extends State<SettingsPage> {
       ]),
     );
   }
+
+  // ---- Logo 主题（品牌标记取色，独立于界面主题）----
+  Widget _logoThemeSection(BuildContext context, AppSettings settings) {
+    final t = context.tokens;
+    final style = _logoStyleOf(settings.logoTheme);
+
+    Widget chip(String key, String label) {
+      final selected = settings.logoTheme == key;
+      return GestureDetector(
+        onTap: () => _update(settings..logoTheme = key),
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 7),
+          decoration: BoxDecoration(
+            color: selected ? t.primary.withValues(alpha: 0.14) : t.surface2,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(color: selected ? t.primary : t.line, width: selected ? 1.5 : 1),
+          ),
+          child: Text(label,
+              style: TextStyle(
+                  color: selected ? t.primary : t.textSub,
+                  fontSize: 12.5,
+                  fontWeight: selected ? FontWeight.w600 : FontWeight.w400)),
+        ),
+      );
+    }
+
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      _section(context, '品牌标记'),
+      Container(
+        padding: const EdgeInsets.all(12),
+        decoration: BoxDecoration(
+          color: t.surface,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(color: t.line),
+        ),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Row(children: [
+            SoughMixLogo(size: 34, style: style),
+            const SizedBox(width: 12),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text('Logo 主题', style: TextStyle(color: t.text, fontSize: 15)),
+                const SizedBox(height: 2),
+                Text('深色用在浅色背景，浅色用在深色背景',
+                    style: TextStyle(color: t.textSub, fontSize: 11.5)),
+              ]),
+            ),
+          ]),
+          const SizedBox(height: 10),
+          Wrap(spacing: 8, children: [
+            chip('auto', '跟随主题'),
+            chip('dark', '深色'),
+            chip('light', '浅色'),
+          ]),
+        ]),
+      ),
+    ]);
+  }
+
+  LogoStyle _logoStyleOf(String v) => switch (v) {
+        'dark' => LogoStyle.dark,
+        'light' => LogoStyle.light,
+        _ => LogoStyle.auto,
+      };
 
   // ---- 外观（规范第八章 8.1/8.2/8.3）----
   Widget _appearance(BuildContext context, AppThemeController tc) {
@@ -268,6 +338,78 @@ class _SettingsPageState extends State<SettingsPage> {
           Text(value, style: TextStyle(color: t.textSub, fontSize: 14)),
           if (onTap != null) Icon(Icons.chevron_right, size: 20, color: t.textSub),
         ]),
+      ),
+    );
+  }
+
+  /// 通知链路诊断弹窗：把每一环真实状态显示出来，一次性定位 ROM 降权/权限/会话问题
+  Future<void> _showNotificationDiagnostics(BuildContext ctx) async {
+    final t = ctx.tokens;
+    final native = await LauncherIcon.diagnoseNotification();
+    final media = NowPlaying.diagnose();
+
+    String importanceText(int v) => switch (v) {
+          -1 => '未知',
+          0 => '0 · 已关闭（通知被禁）',
+          1 => '1 · 最低',
+          2 => '2 · 低（媒体通知标准值）',
+          3 => '3 · 默认（正常）',
+          4 => '4 · 高（正常）',
+          _ => '$v',
+        };
+
+    final chImp = native['channelImportance'] is int ? native['channelImportance'] as int : -1;
+    final rows = <MapEntry<String, String>>[
+      MapEntry('Android 版本', 'SDK ${native['sdk'] ?? '?'}'),
+      MapEntry('通知权限', native['postPermission'] == true ? '已授予' : '未授予'),
+      MapEntry('系统通知总开关', native['notificationsEnabled'] == true ? '开' : '关'),
+      MapEntry('通知通道', native['channelExists'] == true ? '已创建' : '未创建'),
+      MapEntry('通道 ID', '${native['channelId'] ?? '?'}'),
+      MapEntry('通道重要性', importanceText(chImp)),
+      MapEntry('播放器通知已推送', native['notificationPosted'] == true ? '是' : '否'),
+      MapEntry('媒体会话服务', media['service'] ?? '?'),
+      MapEntry('播放中', media['playing'] ?? '?'),
+      MapEntry('处理状态', media['processingState'] ?? '?'),
+      MapEntry('当前媒体项', media['mediaItem'] ?? '?'),
+      MapEntry('倒计时剩余', media['countdown'] ?? '-'),
+    ];
+
+    if (!ctx.mounted) return;
+    showDialog<void>(
+      context: ctx,
+      builder: (dctx) => AlertDialog(
+        title: const Text('通知链路诊断'),
+        content: SingleChildScrollView(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('请开始播放后再打开此页，然后截图下面内容发我。',
+                  style: TextStyle(color: t.textSub, fontSize: 12)),
+              const SizedBox(height: 12),
+              ...rows.map((e) => Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: Row(children: [
+                      SizedBox(width: 108, child: Text(e.key, style: TextStyle(color: t.textSub, fontSize: 13))),
+                      Expanded(child: Text(e.value, style: TextStyle(color: t.text, fontSize: 13))),
+                    ]),
+                  )),
+            ],
+          ),
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(dctx).pop(),
+            child: const Text('关闭'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(dctx).pop();
+              LauncherIcon.openNotificationSettings();
+            },
+            child: const Text('去系统通知设置'),
+          ),
+        ],
       ),
     );
   }

@@ -27,11 +27,11 @@ class TrayService with WindowListener {
 
     try {
       await _tray.initSystemTray(
-        title: 'MixNoticeApp',
+        title: 'SoughMix',
         iconPath: _iconPath(), // E-12：缺失时抛异常走降级
       );
     } catch (_) {
-      await _tray.initSystemTray(title: 'MixNoticeApp', iconPath: _iconPath());
+      await _tray.initSystemTray(title: 'SoughMix', iconPath: _iconPath());
     }
     await _rebuildMenu();
     _tray.registerSystemTrayEventHandler((eventName) {

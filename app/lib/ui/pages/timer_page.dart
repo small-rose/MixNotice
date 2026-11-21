@@ -68,7 +68,13 @@ class _TimerPageState extends State<TimerPage> {
             child: _RingTimer(
               accent: accent,
               track: t.surface2,
-              progress: timer.isRunning ? timer.progress.clamp(0.0, 1.0) : 0.94,
+              // 环显示「剩余比例」：启动时近满环 → 随倒计时递减到空，与闲置装饰满环
+              // 无缝衔接，符合倒计时直觉。结束态留空环，取消则回到装饰满环。
+              progress: timer.phase == TimerPhase.finished
+                  ? 0.0
+                  : timer.isRunning
+                      ? (1.0 - timer.progress).clamp(0.0, 1.0)
+                      : 0.94,
               timeText: _ringTime(timer, durations),
               label: _ringLabel(timer),
             ),
@@ -413,10 +419,12 @@ class _RingPainter extends CustomPainter {
         ..color = track,
     );
 
-    // 进度弧：圆头，自 12 点方向顺时针；进度环与轨道端部留出圆头半径的间隙更精致
-    const gap = 2 * math.pi * 0.012; // 装饰性小缺口（设计稿端部留白）
+    // 进度弧：圆头，自 12 点方向顺时针；进度环与轨道端部留出圆头半径的间隙更精致。
+    // gap 随弧长自适应：短弧（快结束时）也照常绘制，避免 sweep<=gap*2 时整段
+    // 被跳过导致环"突然消失"。这是倒计时末段环不动/跳跃的根因之一。
     final sweep = 2 * math.pi * progress;
-    if (sweep <= gap * 2) return;
+    if (sweep <= 0) return;
+    final gap = math.min(2 * math.pi * 0.012, sweep * 0.15);
     canvas.drawArc(
       rect,
       -math.pi / 2 + gap,

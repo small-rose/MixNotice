@@ -7,7 +7,7 @@ import urllib.parse
 import urllib.request
 
 API = "https://commons.wikimedia.org/w/api.php"
-UA = {"User-Agent": "MixNoticeApp/1.0 (audio asset research; contact: dev@mixnotice.local)"}
+UA = {"User-Agent": "SoughMix/1.0 (audio asset research; contact: dev@mixnotice.local)"}
 
 # 音源 ID -> 检索关键词（英文更易命中）
 QUERIES = {

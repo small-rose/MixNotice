@@ -2,8 +2,8 @@
 // 目的：防止后续重构把 kDefaultTheme 改回 kBuiltinThemes.first 而静默回退成深色。
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:mixnotice/theme/app_themes.dart';
-import 'package:mixnotice/theme/theme_controller.dart';
+import 'package:sough_mix/theme/app_themes.dart';
+import 'package:sough_mix/theme/theme_controller.dart';
 
 void main() {
   test('首次启动默认主题 = 晨雾（浅色）', () {

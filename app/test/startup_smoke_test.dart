@@ -1,27 +1,27 @@
 // 完整启动冒烟测试：复刻 main() 在 Android 上的启动链路，
-// 用真实 MixNoticeApp + 真实控制器/仓库（仅 mock 平台通道），确保首帧可渲染。
+// 用真实 SoughMixApp + 真实控制器/仓库（仅 mock 平台通道），确保首帧可渲染。
 //
 // 背景：真机（Redmi K80 Pro）反馈启动白屏。白屏 = main() 在 runApp 之前
 // 抛异常/挂起，或首帧构建抛异常。本测试用于捕获 Dart 层原因。
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:mixnotice/data/preset_repository.dart';
-import 'package:mixnotice/data/settings_repository.dart';
-import 'package:mixnotice/main.dart';
-import 'package:mixnotice/audio/audio_engine.dart';
-import 'package:mixnotice/audio/playback_controller.dart';
-import 'package:mixnotice/audio/timer_controller.dart';
-import 'package:mixnotice/data/preset_controller.dart';
-import 'package:mixnotice/ui/pages/mixer_page.dart';
-import 'package:mixnotice/theme/app_tokens.dart';
-import 'package:mixnotice/theme/theme_controller.dart';
+import 'package:sough_mix/data/preset_repository.dart';
+import 'package:sough_mix/data/settings_repository.dart';
+import 'package:sough_mix/main.dart';
+import 'package:sough_mix/audio/audio_engine.dart';
+import 'package:sough_mix/audio/playback_controller.dart';
+import 'package:sough_mix/audio/timer_controller.dart';
+import 'package:sough_mix/data/preset_controller.dart';
+import 'package:sough_mix/ui/pages/mixer_page.dart';
+import 'package:sough_mix/theme/app_tokens.dart';
+import 'package:sough_mix/theme/theme_controller.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   TestWidgetsFlutterBinding.ensureInitialized();
 
-  Future<MixNoticeApp> buildApp() async {
+  Future<SoughMixApp> buildApp() async {
     // ---- 平台通道 mock（等同真机插件返回值）----
     SharedPreferences.setMockInitialValues(<String, Object>{});
     const paths = MethodChannel('plugins.flutter.io/path_provider');
@@ -49,7 +49,7 @@ void main() {
     await themeCtrl.load();
     await presetCtrl.load();
 
-    return MixNoticeApp(
+    return SoughMixApp(
       playback: playback,
       timer: timer,
       presetCtrl: presetCtrl,

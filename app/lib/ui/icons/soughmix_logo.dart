@@ -1,4 +1,4 @@
-/// MixNotice 品牌标记（矢量自绘，随主题取色）
+/// 枕声 SoughMix 品牌标记（矢量自绘，随主题取色）
 ///
 /// 概念「三叠浪 · 萤火一点」：
 ///  - 三条振幅递减的声波 = 多轨混音，由「有声」沉入「入静」，轮廓隐含 M（Mix）
@@ -16,26 +16,57 @@ import '../../theme/app_tokens.dart';
 /// 画布基准：96×96 设计单位，绘制时按 [size] 等比缩放
 const double _kLogoViewSize = 96;
 
-class MixNoticeLogo extends StatelessWidget {
+/// 品牌色两套变体（与 brand/mark-*.svg 一一对应）
+/// 深色墨迹版：浅底使用（晨雾 / 暖沙）
+const Color kLogoInkDark = Color(0xFF2E7D5C);
+const Color kLogoDotDark = Color(0xFFC77E2E);
+/// 亮色版：深底使用（夜林 / 深空）
+const Color kLogoInkLight = Color(0xFF4CAF87);
+const Color kLogoDotLight = Color(0xFFE8A854);
+
+/// Logo 取色策略
+enum LogoStyle {
+  /// 跟随当前主题（默认）：深色主题用亮色版，浅色主题用深色墨迹版
+  auto,
+
+  /// 强制深色墨迹版
+  dark,
+
+  /// 强制亮色版
+  light,
+}
+
+/// 解析最终（波浪色, 圆点色）。单色模式下圆点与波浪同色。
+(Color, Color) resolveLogoColors(LogoStyle style, AppTokens t, {bool monochrome = false}) {
+  final (wave, dot) = switch (style) {
+    LogoStyle.dark => (kLogoInkDark, kLogoDotDark),
+    LogoStyle.light => (kLogoInkLight, kLogoDotLight),
+    LogoStyle.auto => (t.primary, t.amber),
+  };
+  return (wave, monochrome ? wave : dot);
+}
+
+class SoughMixLogo extends StatelessWidget {
   final double size;
 
   /// 单色模式：波浪与圆点同用强调色（用于浅色底需要更高对比的场景）
   final bool monochrome;
 
-  const MixNoticeLogo({super.key, this.size = 30, this.monochrome = false});
+  /// 取色策略，默认跟随主题
+  final LogoStyle style;
+
+  const SoughMixLogo({super.key, this.size = 30, this.monochrome = false, this.style = LogoStyle.auto});
 
   @override
   Widget build(BuildContext context) {
     final t = context.tokens;
+    final (wave, dot) = resolveLogoColors(style, t, monochrome: monochrome);
     return Semantics(
-      label: 'MixNotice',
+      label: 'SoughMix',
       child: RepaintBoundary(
         child: CustomPaint(
           size: Size(size, size),
-          painter: _LogoPainter(
-            wave: t.primary,
-            dot: monochrome ? t.primary : t.amber,
-          ),
+          painter: _LogoPainter(wave: wave, dot: dot),
         ),
       ),
     );

@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:mixnotice/theme/app_themes.dart';
-import 'package:mixnotice/ui/icons/mixnotice_logo.dart';
+import 'package:sough_mix/theme/app_themes.dart';
+import 'package:sough_mix/ui/icons/soughmix_logo.dart';
 
 Future<void> _dump(WidgetTester tester, GlobalKey key, String name) async {
   final boundary = key.currentContext!.findRenderObject()! as RenderRepaintBoundary;
@@ -40,7 +40,7 @@ void main() {
                 child: MaterialApp(
                   debugShowCheckedModeBanner: false,
                   theme: buildAppTheme(th),
-                  home: Scaffold(body: Center(child: MixNoticeLogo(size: 72))),
+                  home: Scaffold(body: Center(child: SoughMixLogo(size: 72))),
                 ),
               ),
           ],
@@ -52,8 +52,27 @@ void main() {
     await _dump(tester, key, 'ui_logo_themes');
 
     // 单态是否存在、且四套主题渲染无异常
-    expect(find.byType(MixNoticeLogo), findsNWidgets(4));
+    expect(find.byType(SoughMixLogo), findsNWidgets(4));
     expect(tester.takeException(), isNull);
     expect(File('build/ui_logo_themes.png').existsSync(), isTrue);
+  });
+
+  test('Logo 取色策略：auto 跟随主题，dark / light 为固定品牌色', () {
+    final light = kBuiltinThemes.firstWhere((t) => t.id == 'morning-mist').tokens;
+    final dark = kBuiltinThemes.firstWhere((t) => t.id == 'night-forest').tokens;
+
+    // auto：跟随当前主题 token
+    expect(resolveLogoColors(LogoStyle.auto, light).$1, light.primary);
+    expect(resolveLogoColors(LogoStyle.auto, dark).$1, dark.primary);
+
+    // 强制变体：与主题无关，固定取品牌色
+    expect(resolveLogoColors(LogoStyle.dark, dark).$1, kLogoInkDark);
+    expect(resolveLogoColors(LogoStyle.dark, dark).$2, kLogoDotDark);
+    expect(resolveLogoColors(LogoStyle.light, light).$1, kLogoInkLight);
+    expect(resolveLogoColors(LogoStyle.light, light).$2, kLogoDotLight);
+
+    // 单色模式：圆点与波浪同色
+    final (monoWave, monoDot) = resolveLogoColors(LogoStyle.light, light, monochrome: true);
+    expect(monoDot, monoWave);
   });
 }

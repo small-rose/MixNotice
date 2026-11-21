@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:mixnotice/core/constants.dart';
-import 'package:mixnotice/ui/icons/sound_glyph.dart';
+import 'package:sough_mix/core/constants.dart';
+import 'package:sough_mix/ui/icons/sound_glyph.dart';
 
 void main() {
   testWidgets('导出音源图标预览图', (tester) async {

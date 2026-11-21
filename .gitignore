@@ -1,5 +1,6 @@
 # 构建产物与工具缓存
 app/build/
+app/android/build/
 app/.dart_tool/
 app/android/.gradle/
 app/windows/flutter/ephemeral/

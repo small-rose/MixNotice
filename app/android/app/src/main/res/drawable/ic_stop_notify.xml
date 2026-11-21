@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 退出按钮：纯白色 X 剪影（只有笔画有 alpha，其余透明）。
+     通知按钮图标会被系统整体染成单一颜色（tint），所以不能用"白底+深色X"——
+     那样整块都会被染成同一个颜色，X 反而看不见。纯剪影染色后是一个清晰的 X。
+     r14：缩小绘制范围（viewport 仍 24 保持渲染基准，笔画收进 8..16），视觉更小。 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:pathData="M8,8 L16,16 M16,8 L8,16"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="2.2"
+        android:strokeLineCap="round" />
+</vector>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 通知栏/状态栏小图标：纯白剪影（透明背景），系统按通知 color 染色。
+     三叠浪造型，与桌面图标一致。不能用彩色 launcher icon，否则 MIUI/HyperOS
+     会把它当成主图右下角的彩色小 logo 叠上去。 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:pathData="M3,9 Q6,6.2 9,9 T15,9 T21,9"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M3,14 Q6,11.2 9,14 T15,14 T21,14"
+        android:strokeColor="#FFFFFFFF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:strokeAlpha="0.65" />
+</vector>

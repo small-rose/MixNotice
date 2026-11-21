@@ -1,4 +1,4 @@
-/// MixNoticeApp V1.0 入口
+/// SoughMixApp V1.0 入口
 /// 免登录/免费/本地存储；桌面端关闭最小化到托盘（FR-23）。
 ///
 /// 启动时序（白屏防护，2026-10-26 修复）：
@@ -23,6 +23,7 @@ import 'core/analytics.dart';
 import 'data/preset_controller.dart';
 import 'data/preset_repository.dart';
 import 'data/settings_repository.dart';
+import 'services/launcher_icon.dart';
 import 'services/now_playing.dart';
 import 'services/tray_service.dart';
 import 'theme/app_themes.dart' show buildThemeFromTokens;
@@ -47,7 +48,7 @@ void main() {
   final themeCtrl = AppThemeController();
 
   // ---- 先出首帧 ----
-  runApp(MixNoticeApp(
+  runApp(SoughMixApp(
     playback: playback,
     timer: timer,
     presetCtrl: presetCtrl,
@@ -69,10 +70,11 @@ Future<void> _bootstrap(
   AppThemeController themeCtrl,
 ) async {
   for (final step in <String, Future<void> Function()>{
-    // 系统播放信息（通知栏/锁屏/后台续播）优先：失败也只是少了通知，不影响播放
-    'nowPlaying': () async => NowPlaying.init(playback, timer),
-    'theme': () async => themeCtrl.load(),
+    // 方案库先载入：通知栏上/下一首需要它来切换方案
     'presets': () async => presetCtrl.load(),
+    // 系统播放信息（通知栏/锁屏/后台续播）优先：失败也只是少了通知，不影响播放
+    'nowPlaying': () async => NowPlaying.init(playback, timer, presetCtrl),
+    'theme': () async => themeCtrl.load(),
     'settings': () async => settings.updateFrom(await settingsRepo.load()),
   }.entries) {
     try {
@@ -87,12 +89,23 @@ Future<void> _bootstrap(
     }
   }
 
+  // 桌面图标按设置应用（Android；读取桌面实际状态后再应用，去重防误切换）
+  try {
+    await LauncherIcon.syncFromPlatform();
+    await LauncherIcon.apply(
+      settings.iconTheme,
+      systemDark: WidgetsBinding.instance.platformDispatcher.platformBrightness == Brightness.dark,
+    );
+  } catch (e) {
+    Analytics.instance.log('startup_error', {'stage': 'launcherIcon', 'error': '$e'});
+  }
+
   final isDesktop = !kIsWeb && (Platform.isWindows || Platform.isMacOS || Platform.isLinux);
   if (isDesktop) {
     try {
       await windowManager.ensureInitialized();
       await windowManager.waitUntilReadyToShow(
-        const WindowOptions(minimumSize: Size(560, 480), size: Size(960, 640), title: 'MixNoticeApp'),
+        const WindowOptions(minimumSize: Size(560, 480), size: Size(960, 640), title: '枕声 SoughMix'),
         () async {
           await windowManager.show();
         },
@@ -137,8 +150,8 @@ void _installErrorHandlers() {
   };
 }
 
-class MixNoticeApp extends StatelessWidget {
-  const MixNoticeApp({
+class SoughMixApp extends StatelessWidget {
+  const SoughMixApp({
     super.key,
     required this.playback,
     required this.timer,
@@ -173,7 +186,7 @@ class MixNoticeApp extends StatelessWidget {
         builder: (context, _) {
           final data = buildThemeFromTokens(themeCtrl.tokens, isDark: themeCtrl.isDark);
           return MaterialApp(
-            title: 'MixNotice',
+            title: 'SoughMix',
             debugShowCheckedModeBanner: false,
             theme: data,
             darkTheme: data,
@@ -187,6 +200,15 @@ class MixNoticeApp extends StatelessWidget {
             builder: (ctx, child) {
               // 系统栏跟随主题：默认浅色主题下状态栏必须是深色图标，否则白字看不见
               _syncSystemBars(themeCtrl.tokens, themeCtrl.isDark);
+              // 桌面图标「跟随系统」模式：系统深浅色变化时同步切换（apply 内部去重）
+              if (ctx.mounted) {
+                final brightness = MediaQuery.platformBrightnessOf(ctx);
+                final iconTheme = ctx.watch<AppSettings>().iconTheme;
+                unawaited(LauncherIcon.apply(
+                  iconTheme,
+                  systemDark: brightness == Brightness.dark,
+                ));
+              }
               return AnimatedTheme(
                 data: data,
                 duration: const Duration(milliseconds: 300),

@@ -28,6 +28,10 @@ class PlaybackController extends ChangeNotifier {
   PlaybackState state = PlaybackState.idle;
   DateTime? _sessionStart;
 
+  /// 当前载入的方案 ID。通知栏「上/下一首」据此在方案列表里定位并切换。
+  /// 任何手动改混音的操作都会清空它（此时混音已不再是某个方案）。
+  String? currentPresetId;
+
   /// 正在试听的音源 ID（null = 无试听）。供声音库卡片渲染试听描边态。
   String? previewingSourceId;
 
@@ -57,6 +61,7 @@ class PlaybackController extends ChangeNotifier {
       sourceId: sourceId,
     );
     channels.add(ch);
+    currentPresetId = null; // 手动加轨后不再是纯方案
     if (autoPlay) {
       if (state == PlaybackState.idle) {
         _sessionStart = DateTime.now();
@@ -85,6 +90,7 @@ class PlaybackController extends ChangeNotifier {
 
   Future<void> removeChannel(Channel ch) async {
     channels.remove(ch);
+    currentPresetId = null;
     await _guarded(_engine.removeChannel(ch.id));
     // 剩 0 轨时引擎已无实例，状态归为显式清空（PRD 9.1）
     if (channels.isEmpty) {
@@ -126,6 +132,7 @@ class PlaybackController extends ChangeNotifier {
 
   Future<void> clearMix() async {
     channels.clear();
+    currentPresetId = null;
     await _guarded(_engine.stopAll());
     state = PlaybackState.idle;
     _endSession('manual');
@@ -159,6 +166,7 @@ class PlaybackController extends ChangeNotifier {
 
   Future<void> stopAll() async {
     channels.clear();
+    currentPresetId = null;
     await _guarded(_engine.stopAll());
     state = PlaybackState.idle;
     _endSession('manual');
@@ -168,6 +176,7 @@ class PlaybackController extends ChangeNotifier {
   /// 载入方案（FR-10）：替换当前混音并播放
   Future<void> loadPreset(PresetData preset) async {
     channels.clear();
+    currentPresetId = preset.id; // 通知栏上/下一首据此定位当前方案
     await _guarded(_engine.stopAll());
     final seen = <String>{};
     for (final c in preset.channels) {
@@ -224,6 +233,7 @@ class PlaybackController extends ChangeNotifier {
   // ---- 渐弱结束（睡眠倒计时归零，FR-16）----
   Future<void> stopBySleepTimer() async {
     channels.clear();
+    currentPresetId = null;
     await _guarded(_engine.stopAll());
     state = PlaybackState.idle;
     _endSession('sleep_fade');

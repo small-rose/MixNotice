@@ -12,9 +12,9 @@ night-crickets,夜晚虫鸣,night-crickets.m4a,https://commons.wikimedia.org/wik
 cafe,咖啡馆,cafe.m4a,https://commons.wikimedia.org/wiki/File%3ARestaurant_ambience.ogg,stephan,Public domain,裁切 60s + 响度归一 + 首尾 1s 交叉淡化
 keyboard,键盘敲击,keyboard.m4a,https://commons.wikimedia.org/wiki/File%3AComputer_keyboard.ogg,russiandoll,Public domain,裁切 60s + 响度归一 + 首尾 1s 交叉淡化
 chimes,风铃,chimes.m4a,https://commons.wikimedia.org/wiki/File%3AWindglockenspiel.Koshi.ogg,Koshi / Wikimedia Commons,CC0,裁切 57s + 响度归一 + 首尾 1s 交叉淡化
-noise-white,白噪音,noise-white.m4a,本机合成（ffmpeg anoisesrc）,MixNoticeApp,无需授权（算法生成）,算法合成 60s
-noise-pink,粉噪音,noise-pink.m4a,本机合成（ffmpeg anoisesrc）,MixNoticeApp,无需授权（算法生成）,算法合成 60s
-noise-brown,棕噪音,noise-brown.m4a,本机合成（ffmpeg anoisesrc）,MixNoticeApp,无需授权（算法生成）,算法合成 60s
+noise-white,白噪音,noise-white.m4a,本机合成（ffmpeg anoisesrc）,SoughMix,无需授权（算法生成）,算法合成 60s
+noise-pink,粉噪音,noise-pink.m4a,本机合成（ffmpeg anoisesrc）,SoughMix,无需授权（算法生成）,算法合成 60s
+noise-brown,棕噪音,noise-brown.m4a,本机合成（ffmpeg anoisesrc）,SoughMix,无需授权（算法生成）,算法合成 60s
 dog-bark,狗叫,dog-bark.m4a,https://commons.wikimedia.org/wiki/File%3ABarking_dog_in_Rome.ogg," ‹a href=""//commons.wikimedia.org/wiki/User:Nicholas_Gemini"" title=""User:Nichola",CC BY-SA 3.0,v1.1 事件编排 100s（中密度/纯静音间隔）+ 环形相位旋转（起始 0.4s 出声、循环点不叠加静音）；素材同源
 rooster-crow,公鸡打鸣,rooster-crow.m4a,https://commons.wikimedia.org/wiki/File%3ASmall_rooster_crowing.ogg,alys,Public domain,v1.1 事件库素材之一；编排 120s 中密度纯静音间隔 + 环形相位旋转（起始 0.4s 出声、循环点不叠加静音）
 rooster-crow,公鸡打鸣,rooster-crow.m4a,https://commons.wikimedia.org/wiki/File%3AMedium_rooster_crowing.ogg,alys,Public domain,v1.1 事件库素材之一；同上

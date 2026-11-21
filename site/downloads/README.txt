@@ -4,7 +4,7 @@ downloads/
 
 当前下载方式：APK 通过 GitHub Releases 发布（单文件上限 2GB），
 官网 `index.html` 的「下载 APK」按钮及 `/download`、`/apk` 短链
-均指向 https://github.com/small-rose/MixNotice/releases
+均指向 https://github.com/small-rose/SoughMix/releases
 
 维护提示（发布新版本时）：
 1. 用 tools/build_apk.ps1 打包，产物自动落在项目根目录

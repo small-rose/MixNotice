@@ -1,6 +1,6 @@
-# MixNoticeApp V1.0（MVP 工程）
+# 枕声 SoughMix V1.0（MVP 工程）
 
-依据《PRD-MixNoticeApp-V1.0.md》《UI设计规范-MixNoticeApp-v1.1.md》实现的 Flutter 单代码库双端工程。
+依据《PRD-SoughMix-V1.0.md》《UI设计规范-SoughMix-v1.1.md》实现的 Flutter 单代码库双端工程。
 
 ## 运行
 

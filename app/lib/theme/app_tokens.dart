@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 /// ============================================================
 /// L1 基础层：语义 Token
-/// 规范来源：《UI设计规范-MixNoticeApp-v1.1.md》第二章
+/// 规范来源：《UI设计规范-SoughMixApp-v1.1.md》第二章
 /// 规则：组件代码只允许引用 AppTokens 的字段，禁止写死色值。
 /// ============================================================
 
@@ -41,7 +41,7 @@ class AppTokens extends ThemeExtension<AppTokens> {
     surface2: Color(0xFF223029),
     primary: Color(0xFF4CAF87),
     primaryPress: Color(0xFF3D9B72),
-    amber: Color(0xFFE8A854),
+    amber: Color(0xFFD69A5E),
     teal: Color(0xFF4CB8A4),
     text: Color(0xFFEAF2EC),
     textSub: Color(0xFF9DB3A6),
@@ -56,7 +56,7 @@ class AppTokens extends ThemeExtension<AppTokens> {
     surface2: Color(0xFF1E2733),
     primary: Color(0xFF5B9BD5),
     primaryPress: Color(0xFF4A87BF),
-    amber: Color(0xFFE8A854),
+    amber: Color(0xFFD69A5E),
     teal: Color(0xFF4CB8A4),
     text: Color(0xFFE8EEF5),
     textSub: Color(0xFF97A6B5),
@@ -71,7 +71,7 @@ class AppTokens extends ThemeExtension<AppTokens> {
     surface2: Color(0xFFE4E3DC),
     primary: Color(0xFF2E7D5C),
     primaryPress: Color(0xFF256A4D),
-    amber: Color(0xFFC77E2E),
+    amber: Color(0xFFB9813F),
     teal: Color(0xFF2E8C7A),
     text: Color(0xFF1F2B25),
     textSub: Color(0xFF6B7D74),
@@ -86,7 +86,7 @@ class AppTokens extends ThemeExtension<AppTokens> {
     surface2: Color(0xFFEAE2D4),
     primary: Color(0xFFB0713A),
     primaryPress: Color(0xFF9A6030),
-    amber: Color(0xFFC77E2E),
+    amber: Color(0xFFB9813F),
     teal: Color(0xFF2E8C7A),
     text: Color(0xFF2A2118),
     textSub: Color(0xFF7A6C5C),

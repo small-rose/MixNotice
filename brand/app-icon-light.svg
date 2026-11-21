@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!-- 枕声 SoughMix 应用图标 · 浅色版：暖米白底 + 晨雾深绿浪 + 暖琥珀萤火
+       与 mark-light.svg 同源配色（浅底浪压深一档，白底上 #4CAF87 对比不足） -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FAF6EC"/>
+      <stop offset=".55" stop-color="#F4EEDF"/>
+      <stop offset="1" stop-color="#EAE2CF"/>
+    </linearGradient>
+    <radialGradient id="glow" cx=".34" cy=".3" r=".8">
+      <stop offset="0" stop-color="#2E7D5C" stop-opacity=".10"/>
+      <stop offset=".62" stop-color="#2E7D5C" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1024" height="1024" rx="232" fill="url(#bg)"/>
+  <rect width="1024" height="1024" rx="232" fill="url(#glow)"/>
+  <rect x="14" y="14" width="996" height="996" rx="222" fill="none" stroke="#3A2E1C" stroke-opacity=".06" stroke-width="6"/>
+
+  <!-- 三叠浪：振幅自上而下递减（有声 → 入静），轮廓隐含 M -->
+  <g fill="none" stroke="#2E7D5C" stroke-linecap="round">
+    <path d="M230 430 q70.5 -92 141 0 q70.5 92 141 0 q70.5 -92 141 0 q70.5 92 141 0" stroke-width="112" opacity=".14"/>
+    <path d="M230 430 q70.5 -92 141 0 q70.5 92 141 0 q70.5 -92 141 0 q70.5 92 141 0" stroke-width="66"/>
+    <path d="M272 586 q60 -58 120 0 q60 58 120 0 q60 -58 120 0 q60 58 120 0" stroke-width="58" opacity=".58"/>
+    <path d="M322 722 q47.5 -36 95 0 q47.5 36 95 0 q47.5 -36 95 0 q47.5 36 95 0" stroke-width="52" opacity=".42"/>
+  </g>
+
+  <!-- 萤火一点 -->
+  <circle cx="770" cy="280" r="44" fill="#C77E2E"/>
+</svg>
